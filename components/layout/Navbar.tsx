@@ -1,18 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Logo from '../../utils/logo.png';
 import { useRouter } from 'next/router';
 import { GoSignIn } from 'react-icons/go';
 import { BiSearch } from 'react-icons/bi';
-import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
-import { MdCreate, MdOutlineAddTask, MdOutlineCreateNewFolder } from 'react-icons/md';
-import Create from '../modals/Create';
+
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<Boolean>(false);
     const [showUserDropdown, setShowUserDropdown] = useState<Boolean>(false);
-    const [activeCreateModal, setActiveCreateModal] = useState<Number>(0);
     const [searchValue, setSearchValue] = useState('');
     const router = useRouter();
     const user = true
@@ -22,7 +19,7 @@ const Navbar = () => {
         
         if(searchValue) {
       //  router.push(`/search/${searchValue}`);
-        alert("Search functionality is work in progress")
+        alert("Search functionality is not available for this demo.")
         }
     };
 
@@ -82,6 +79,14 @@ const Navbar = () => {
 
               {/**user menu */}
 
+              {user 
+              ? 
+              <>
+              <div>
+                <h2>Userlogo</h2>
+              </div>
+              </>
+              :
               <div className='pt-1 mr-1'>
                   <Link href={`/auth/login`} 
                       className="flex w-8 h-8 mr-3 text-sm justify-items-center bg-green-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -89,11 +94,8 @@ const Navbar = () => {
                       <GoSignIn className='rounded-full pl-1 pt-1 w-7 h-7 text-white'/>
                   </Link>
               </div>
-
-
-              
-          
-              {/**user menu */}
+              }
+              {/**end user menu */}
 
               {/**open menu button for small screens */}
               <button
@@ -143,27 +145,6 @@ const Navbar = () => {
                       About
                   </Link>
                   </li>
-                  
-                  {!user ? (
-                      ""
-                  ) : (
-                      <li className='flex flex-row space-x-5 py-1 pl-3 pr-4'>
-                          <button
-                          onClick={() => {activeCreateModal !== 1 ? setActiveCreateModal(1) : setActiveCreateModal(0)}} 
-                          className="text-green-600 font-bold hover:scale-125 hover:text-green-800" 
-                          >
-                              <MdCreate/>
-                          </button>
-                      </li>
-                  )}
-                  
-                  
-                  
-                  <Create
-                  onClose={() => setActiveCreateModal(0)}
-                  isActive={activeCreateModal === 1}
-                  heading={"create profile"}
-                  />
               </ul>
               </div>
 

@@ -12,7 +12,7 @@ const Footer = () => {
   const legal = ["Terms", "Privacy", "Cookies"];
 
   return (
-    <footer className={`p-4 border-2 bg-white border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-1 min-h-[12vh] mb-1 ${pathname === '/auth/login' ? "" : "xl:sticky xl:bottom-0"}`}>
+    <footer className={`p-4 mx-1 md:mx-4 border-2 bg-white border-gray-200 border-solid rounded-lg dark:border-gray-700 my-1 min-h-[12vh] ${pathname === '/auth/login' ? "" : "xl:sticky xl:bottom-0"}`}>
         <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-0 mx-auto mt-0 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="max-w-md mt-4 text-gray-600 dark:text-gray-400">
@@ -44,7 +44,7 @@ const Footer = () => {
         <div className="my-5 text-sm text-center text-gray-600 dark:text-gray-400">
            © {new Date().getFullYear()}{" "}
           <Link
-            href="https://ravenholmdev.com/"
+            href="https://ravenholmdev.com/author/archie"
             target="_blank"
             rel="noopener">
             RavenHolmDev_
