@@ -99,7 +99,7 @@ const Update: NextPage<IProps> = ({isActive, onClose, heading, itemId}) => {
                 {/* Modal header */}
                 <div className="flex items-start justify-between p-5 border-b rounded-t dark:border-gray-700">
                 <h3 className="text-xl font-semibold dark:text-white">
-                  {heading} {item._id.slice(0,7)}
+                  {heading}
                 </h3>
                 <button
                 onClick={onClose}
@@ -130,7 +130,7 @@ const Update: NextPage<IProps> = ({isActive, onClose, heading, itemId}) => {
                         </label>
                         <input 
                           type="text"
-                         // value={title}
+                          value={surname}
                          // onChange={(e) => setTitle(e.target.value)}
                           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                         />
@@ -141,8 +141,8 @@ const Update: NextPage<IProps> = ({isActive, onClose, heading, itemId}) => {
                           Date of Birth
                         </label>
                         <input 
-                          type="text"
-                         // value={title}
+                          type="number"
+                         // value={dateOfBirth}
                          // onChange={(e) => setTitle(e.target.value)}
                           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
                         />
