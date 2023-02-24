@@ -8,7 +8,7 @@ interface Props {
 
 const SectionTitle = (props:Props) => {
   return (
-    <div className={`container p-8 mx-auto flex w-full flex-col mt-4 items-center justify-center text-center`}>
+    <div className={`container p-1 mx-auto flex w-full flex-col mt-4 items-center justify-center text-center`}>
       {props.pretitle && (
         <div className="text-sm font-bold tracking-wider text-orange-500 uppercase">
           {props.pretitle}
@@ -22,7 +22,7 @@ const SectionTitle = (props:Props) => {
       )}
 
       {props.children && (
-        <p className="max-w-2xl py-4 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
+        <p className="max-w-2xl py-1 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl dark:text-gray-300">
           {props.children}
         </p>
       )}

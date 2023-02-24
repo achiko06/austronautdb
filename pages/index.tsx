@@ -5,10 +5,10 @@ import { MdCreate } from 'react-icons/md';
 import Wrapper from '@/components/shared/Wrapper';
 import Counter from '@/components/shared/Counter';
 import SectionTitle from '@/components/shared/SectionTitle';
+import DeleteModal from '@/components/modals/Delete';
+import Delete from '@/components/modals/Delete';
 
 export default function Home() {
-  const [activeCreateModal, setActiveCreateModal] = useState<Number>(0);
-
   
   const austronautCount = austronauts.length
   const powerCount = 1
@@ -73,23 +73,6 @@ export default function Home() {
           title="Austronauts">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptate maiores et impedit aliquam porro ratione temporibus neque recusandae eum 
         </SectionTitle>
-        
-        <div className='flex flex-row space-x-5 py-1 pl-3 pr-4'>
-          <button
-            onClick={() => {activeCreateModal !== 1 ? setActiveCreateModal(1) : setActiveCreateModal(0)}} 
-            className="text-green-600 font-bold hover:scale-125 hover:text-green-800 flex flex-row" 
-          >
-            <MdCreate/> Create 
-          </button>
-        </div>
-
-        {/**MODALS */}
-        <Create
-          onClose={() => setActiveCreateModal(0)}
-          isActive={activeCreateModal === 1}
-          heading={"create profile"}
-        />
-        {/**MODALS END */}
 
         {/**MAIN TABLE */}
         <Wrapper 

@@ -48,7 +48,7 @@ const Create: NextPage<IProps> = ({isActive, onClose, heading}) => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                          Title
+                          Name
                         </label>
                         <input 
                           type="text"
