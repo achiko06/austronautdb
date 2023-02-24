@@ -7,8 +7,16 @@ import Counter from '@/components/shared/Counter';
 import SectionTitle from '@/components/shared/SectionTitle';
 import DeleteModal from '@/components/modals/Delete';
 import Delete from '@/components/modals/Delete';
+import axios from 'axios';
+import { BASE_URL } from '@/utils';
+import { Person } from '@/types';
 
-export default function Home() {
+interface IProps {
+  persons: Person[];
+}
+
+export default function Home({ persons }: IProps) {
+  console.log(persons)
   
   const austronautCount = austronauts.length
   const powerCount = 1
@@ -85,3 +93,14 @@ export default function Home() {
     </>
   )
 }
+
+export const getServerSideProps = async () => {
+
+  let personRes = await axios.get(`${BASE_URL}/api/item`);
+
+  return {
+    props: { 
+      persons: personRes.data,
+    },
+  };
+};
