@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
-import Create from '@/components/modals/Create';
-import { austronauts } from '@/utils/dummydata';
-import { MdCreate } from 'react-icons/md';
+import { austronauts, powers } from '@/utils/dummydata';
 import Wrapper from '@/components/shared/Wrapper';
 import Counter from '@/components/shared/Counter';
 import SectionTitle from '@/components/shared/SectionTitle';
-import DeleteModal from '@/components/modals/Delete';
-import Delete from '@/components/modals/Delete';
 import axios from 'axios';
 import { BASE_URL } from '@/utils';
 import { Person } from '@/types';
@@ -16,17 +12,15 @@ interface IProps {
 }
 
 export default function Home({ persons }: IProps) {
-  console.log(persons)
-  
-  const austronautCount = austronauts.length
-  const powerCount = 1
-  const total = austronautCount + powerCount
+  const astronautCount = persons.length
+  const powerCount = powers.length
+  const total = astronautCount + powerCount
 
   const counterData = [
     {
-      title: 'Austronauts',
+      title: 'Astronauts',
       id: 1,
-      count: austronautCount,
+      count: astronautCount,
       color: 'bg-gradient-to-br from-green-200 to-green-600',
     },
     {
@@ -78,13 +72,13 @@ export default function Home({ persons }: IProps) {
 
         <SectionTitle
           pretitle="EEA Database"
-          title="Austronauts">
+          title="Test">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptate maiores et impedit aliquam porro ratione temporibus neque recusandae eum 
         </SectionTitle>
 
         {/**MAIN TABLE */}
         <Wrapper 
-        data={austronauts} 
+        data={persons} 
         headers={titles}
         wrapperTitles={wrapperTitles}
         />

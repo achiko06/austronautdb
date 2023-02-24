@@ -24,13 +24,13 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                         <Update
                             onClose={onClose}
                             isActive={open === 2}
-                            heading={`Update item #${selectedItem}`}
+                            heading={`Update item #${selectedItem.slice(0,8)}`}
                             itemId={selectedItem}
                         />
                         <Delete
                             onClose={onClose}
                             isActive={open === 3}
-                            heading={`Are you sure you want to delete item #${selectedItem}?`}
+                            heading={`Are you sure you want to delete item #${selectedItem.slice(0,8)}?`}
                             itemId={selectedItem}
                         />
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
@@ -57,14 +57,14 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                         {item.surname}
                                     </td>
                                     <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                        {item.dateOfBirth}
+                                        {item.birthDate.slice(0,10)}
                                     </td>
                                     <td className="p-4 text-sm font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">
                                         {item.power}
                                     </td>
                                     
                                     <td className="p-0 whitespace-nowrap">
-                                        <Link href={`/profile/${item._id}`}>
+                                        <Link href={`/profile/${item.slug.current}`}>
                                             <button 
                                                 type="button" 
                                                 className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-green-200 to-green-600 hover:from-green-400 hover:to-green-800  border border-gray-900 rounded-l-lg">
