@@ -24,12 +24,13 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                         <Update
                             onClose={onClose}
                             isActive={open === 2}
-                            heading={`Update ${selectedItem}`}
+                            heading={`Update item #${selectedItem}`}
                             itemId={selectedItem}
                         />
                         <Delete
                             onClose={onClose}
                             isActive={open === 3}
+                            heading={`Are you sure you want to delete item #${selectedItem}?`}
                             itemId={selectedItem}
                         />
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
@@ -63,7 +64,7 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                     </td>
                                     
                                     <td className="p-0 whitespace-nowrap">
-                                        <Link href={`/${item._id}`}>
+                                        <Link href={`/profile/${item._id}`}>
                                             <button 
                                                 type="button" 
                                                 className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-green-200 to-green-600 hover:from-green-400 hover:to-green-800  border border-gray-900 rounded-l-lg">
@@ -80,7 +81,6 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-yellow-200 to-yellow-600  border-t border-b border-gray-900 hover:bg-orange-500 hover:from-yellow-400 hover:to-yellow-800 ">
                                             Edit
                                         </button>
-                                        
                                         <button 
                                             type="button"
                                             value={item._id}
@@ -89,11 +89,8 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                                 openDelete()
                                             }}
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-red-200 to-red-600 border border-gray-900 rounded-r-md hover:bg-red-500 hover:from-red-400 hover:to-red-800">
-                                            Delete {item._id}
-                                        </button>
-                                        
-                                            
-                                        
+                                            Delete
+                                        </button> 
                                     </td>
                                 </tr>
                                 ))}
