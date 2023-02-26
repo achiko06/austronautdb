@@ -43,11 +43,13 @@ const Footer = () => {
         </div>
         <div className="my-5 text-sm text-center text-gray-600 dark:text-gray-400">
            © {new Date().getFullYear()}{" "}
+           Made for demo only by{" "}
           <Link
             href="https://ravenholmdev.com/author/archie"
             target="_blank"
+            className='font-semibold hover:text-green-600'
             rel="noopener">
-            RavenHolmDev_
+            Archie_
           </Link>
         </div>
     </footer>

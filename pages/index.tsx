@@ -57,7 +57,7 @@ export default function Home({ persons }: IProps) {
     },
   ];
 
-  const wrapperTitles = 
+  const tableTitles = 
     {
       h3: "Austronauts",
       span: "Some title",
@@ -80,7 +80,7 @@ export default function Home({ persons }: IProps) {
         <Wrapper 
         data={persons} 
         headers={titles}
-        wrapperTitles={wrapperTitles}
+        wrapperTitles={tableTitles}
         />
         {/**MAIN TABLE END*/}
       </div>
