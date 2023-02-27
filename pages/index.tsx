@@ -59,8 +59,8 @@ export default function Home({ persons }: IProps) {
 
   const tableTitles = 
     {
-      h3: "Austronauts",
-      span: "Some title",
+      h3: "Astronauts",
+      span: "Table view",
       _id: 1,
     }
   
@@ -72,8 +72,8 @@ export default function Home({ persons }: IProps) {
 
         <SectionTitle
           pretitle="EEA Database"
-          title="Test">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit voluptate maiores et impedit aliquam porro ratione temporibus neque recusandae eum 
+          title="Electronic records of Astronauts">
+          Welcome to the Demo, this website was developed only for demo purposes. Some astronaut names might be made up.
         </SectionTitle>
 
         {/**MAIN TABLE */}

@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="grid max-w-screen-xl grid-cols-1 gap-10 pt-0 mx-auto mt-0 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="max-w-md mt-4 text-gray-600 dark:text-gray-400">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur rerum nobis aspernatur, vitaeestiae dignissimos doloremque esse officia, eaque hic.
+              <span className='font-bold'>DEMO:</span> Electronic records of Astronauts
             </div>
           </div>
 

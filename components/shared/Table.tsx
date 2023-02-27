@@ -81,45 +81,41 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                         <button 
                                             type="button"
                                             onClick={(e) => {
-                                                //setSelectedItem(item._id);
-                                                //handleSelect()
-                                                setSelectedItem(() => {
-                                                    return {
-                                                        _id: item._id,
-                                                        name: item.name,
-                                                        surname: item.surname,
-                                                        birthDate: item.birthDate,
-                                                        power: item.power 
-                                                    }
-                                                  });
-                                                openEdit()
+                                            setSelectedItem(() => {
+                                                return {
+                                                    _id: item._id,
+                                                    name: item.name,
+                                                    surname: item.surname,
+                                                    birthDate: item.birthDate,
+                                                    power: item.power 
+                                                }
+                                                });
+                                            openEdit()
                                             }}
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-yellow-200 to-yellow-600  border-t border-b border-gray-900 hover:bg-orange-500 hover:from-yellow-400 hover:to-yellow-800 ">
-                                            Edit
+                                                Edit
                                         </button>
                                         <button 
                                             type="button"
                                             value={item._id}
                                             onClick={(e) => {
-                                                setSelectedItem(() => {
-                                                    return {
-                                                        _id: item._id,
-                                                        name: item.name,
-                                                        surname: item.surname,
-                                                        birthDate: item.birthDate,
-                                                        power: item.power 
-                                                    }
-                                                  });
-                                                openDelete()
+                                            setSelectedItem(() => {
+                                                return {
+                                                    _id: item._id,
+                                                    name: item.name,
+                                                    surname: item.surname,
+                                                    birthDate: item.birthDate,
+                                                    power: item.power 
+                                                }
+                                                });
+                                            openDelete()
                                             }}
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-red-200 to-red-600 border border-gray-900 rounded-r-md hover:bg-red-500 hover:from-red-400 hover:to-red-800">
-                                            Delete
+                                                Delete
                                         </button> 
                                     </td>
                                 </tr>
-                                ))}
-
-                                
+                                ))} 
                             </tbody>
                         </table>
                     </div>

@@ -124,7 +124,7 @@ const Create: NextPage<IProps> = ({isActive, onClose, heading}) => {
                     {powers.map((item) => (
                       <option
                         key={item._id}
-                        value={item.value}
+                        value={item.title}
                       >
                         {item.title}
                       </option>

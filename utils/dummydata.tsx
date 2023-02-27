@@ -35,7 +35,7 @@ export const powers = [
   },
   {
     _id: 3,
-    title: 'Shapeshiftin',
+    title: 'Shapeshifting',
     value: 'shapeshifting',
   },
   {
