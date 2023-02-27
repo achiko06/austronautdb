@@ -1,13 +1,44 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { client } from '../../../utils/client';
 
-type Data = {
-  name: string
-}
+export default async function handler( req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    ""
+  } else if (req.method === 'PUT') {
+    if (req.body._type === 'person') {
+      const { 
+        itemId,
+        name,
+        surname,
+        birthDate,
+        power,
+        slug
+      } = req.body;
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+      const data = await client
+        .patch(itemId)
+        .set({
+          name,
+          surname,
+          birthDate,
+          power,
+          slug
+        })
+        .commit();
+
+      res.status(200).json(data);
+    } 
+
+  } else if (req.method === 'DELETE') {
+    const { id }: any = req.query;
+
+    const data = 
+    await client
+      .delete(id)
+      .then(console.log)
+      .catch(console.error)
+
+    res.status(200).json(data);
+
+  }
 }

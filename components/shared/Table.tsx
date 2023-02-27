@@ -14,7 +14,13 @@ interface IProps {
   }
 
 const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDelete}) => {
-    const [selectedItem, setSelectedItem] = useState<string>("0");
+    const [selectedItem, setSelectedItem] = useState({
+        _id: "",
+        name: "",
+        surname: "",
+        birthDate: "",
+        power: ""
+    })
 
     return (
         <div className="flex flex-col mt-6">
@@ -24,14 +30,14 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                         <Update
                             onClose={onClose}
                             isActive={open === 2}
-                            heading={`Update item #${selectedItem.slice(0,8)}`}
-                            itemId={selectedItem}
+                            heading={`Update item #${selectedItem._id.slice(0,8)}`}
+                            item={selectedItem}
                         />
                         <Delete
                             onClose={onClose}
                             isActive={open === 3}
-                            heading={`Are you sure you want to delete item #${selectedItem.slice(0,8)}?`}
-                            itemId={selectedItem}
+                            heading={`Are you sure you want to delete item #${selectedItem._id.slice(0,8)}?`}
+                            itemId={selectedItem._id}
                         />
                         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
                             <thead className="bg-gray-50 dark:bg-gray-700">
@@ -75,7 +81,17 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                         <button 
                                             type="button"
                                             onClick={(e) => {
-                                                setSelectedItem(item._id);
+                                                //setSelectedItem(item._id);
+                                                //handleSelect()
+                                                setSelectedItem(() => {
+                                                    return {
+                                                        _id: item._id,
+                                                        name: item.name,
+                                                        surname: item.surname,
+                                                        birthDate: item.birthDate,
+                                                        power: item.power 
+                                                    }
+                                                  });
                                                 openEdit()
                                             }}
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-yellow-200 to-yellow-600  border-t border-b border-gray-900 hover:bg-orange-500 hover:from-yellow-400 hover:to-yellow-800 ">
@@ -85,7 +101,15 @@ const Table: NextPage<IProps> = ({data, headers, onClose, open, openEdit, openDe
                                             type="button"
                                             value={item._id}
                                             onClick={(e) => {
-                                                setSelectedItem(item._id);
+                                                setSelectedItem(() => {
+                                                    return {
+                                                        _id: item._id,
+                                                        name: item.name,
+                                                        surname: item.surname,
+                                                        birthDate: item.birthDate,
+                                                        power: item.power 
+                                                    }
+                                                  });
                                                 openDelete()
                                             }}
                                             className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-br from-red-200 to-red-600 border border-gray-900 rounded-r-md hover:bg-red-500 hover:from-red-400 hover:to-red-800">
