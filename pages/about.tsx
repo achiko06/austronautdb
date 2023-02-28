@@ -1,8 +1,14 @@
 import SectionTitle from '@/components/shared/SectionTitle'
+import Head from 'next/head'
 import React from 'react'
 
 const About = () => {
   return (
+    <>
+    <Head>
+      <title>About | EEA</title>
+      <meta name="description" content="About: Electronic records of Astronauts" />
+    </Head>
     <main>
       <article>
         <SectionTitle
@@ -42,6 +48,7 @@ const About = () => {
       
       </article>
     </main>
+    </>
   )
 }
 

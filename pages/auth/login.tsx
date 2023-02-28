@@ -1,4 +1,5 @@
 import { useSession, signIn } from 'next-auth/react';
+import Head from 'next/head';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from "next/router";
@@ -29,9 +30,14 @@ const Login = () => {
 
   if (status === 'loading') return <p>Loading...</p>;
 
-  if (data !== null) return <div>You are already logged in. View <Link href='/' className='underline'>Home</Link></div>;
+  //if (data !== null) return <div>You are already logged in. View <Link href='/' className='underline'>Home</Link></div>;
 
   return (
+    <>
+    <Head>
+      <title>Login | EEA</title>
+      <meta name="description" content="Login: Electronic records of Astronauts" />
+    </Head>
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
@@ -84,6 +90,7 @@ const Login = () => {
         </div>
       </div>
     </section>
+    </>
   )
 }
 
