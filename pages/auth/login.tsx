@@ -29,7 +29,7 @@ const Login = () => {
 
   if (status === 'loading') return <p>Loading...</p>;
 
-  if (data !== null) return <div>You are already logged in. View <a href='/' className='underline'>Home</a></div>;
+  if (data !== null) return <div>You are already logged in. View <Link href='/' className='underline'>Home</Link></div>;
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
