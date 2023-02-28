@@ -2,7 +2,6 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import { SanityAdapter, SanityCredentials } from 'next-auth-sanity';
 import CredentialsProvider from "next-auth/providers/credentials";
 import { client } from '@/utils/client';
-import { singleUserQuery } from "@/utils/queries";
 import { BASE_URL } from "@/utils";
 import axios from "axios";
 
@@ -12,36 +11,22 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: "credentials",
       credentials: {},
-      authorize(credentials, req) {
+      async authorize(credentials, req) {
         const { email, password } = credentials as {
           email: string;
           password: string;
         };
         // perform you login logic
         // find out user from db - validate if credentials are correct
-        if (email !== "testuser2@test.com" || password !== "testing") {
+        if (email !== process.env.AUTHORIZED_EMAIL || password !== process.env.AUTHORIZED_PASS) {
           throw new Error("invalid credentials");
-        }
+        } // hard coded for this demo, later we can validate password based on value stored in db. encode/decode, etc.
 
-        {/*
-        const query = singleUserQuery(email);
-        console.log(query)
-        const createOrGetUser = async () => {
-          const tetstt = await client.fetch(query);
-          return tetstt
-        }* */}
-  
-
-        
-        
-      
         // if everything is fine -> return the user from sanity db
-        return {
-          id: "1234",
-          name: "John Doe1",
-          email: "testuser2@test.com",
-          role: "admin",
-        };
+        const res = await axios.get(`${BASE_URL}/api/user/${email}`);
+        //console.log("ASYNC", res.data.user)
+        const userData = res.data.user
+        return userData
       },
     }),
   ],
@@ -57,8 +42,8 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     jwt(params) {
       // update token
-      if (params.user?.role) {
-        params.token.role = params.user.role;
+      if (params.user?.usertype) {
+        params.token.role = params.user.usertype;
       }
       // return final_token
       return params.token;

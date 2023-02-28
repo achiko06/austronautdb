@@ -9,8 +9,6 @@ const Credentials: FC = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const router = useRouter();
-  const session = useSession();
-  console.log(session)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +34,6 @@ const Credentials: FC = () => {
       email,
       password
     });
-    console.log(res)
 
     if (res?.error) {
       alert(res.error)

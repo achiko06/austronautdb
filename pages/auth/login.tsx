@@ -17,8 +17,6 @@ const Login = () => {
       redirect: false,
     });
 
-    console.log(res)
-
     if (res?.error) {
       alert(res.error)
     } else if (res?.status === 200) {
