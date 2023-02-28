@@ -76,11 +76,6 @@ export default function Home({ persons }: IProps) {
   return (
     <>
       <div>
-        <p>User: {data?.user?.name}</p>
-        <button onClick={() => signOut({ redirect: false })}>Sign Out</button>
-      </div>
-
-      <div>
         <Counter data={counterData}/>
 
         <SectionTitle

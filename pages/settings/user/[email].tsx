@@ -1,9 +1,17 @@
 import Card from '@/components/shared/Card'
+import { IUser } from '@/types';
+import { BASE_URL } from '@/utils';
+import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
 
-const User = () => {
+interface IProps {
+  userDetails: IUser;
+}
+
+const User = ({ userDetails }: IProps) => {
+  console.log(userDetails)
   const { status, data } = useSession();
   const router = useRouter();
   useEffect(() => {
@@ -29,7 +37,7 @@ const User = () => {
     },
     {
       _id: 2,
-      title: 'test',
+      title: userDetails.name,
       href: '',
       className: 'ml-1 text-gray-400 md:ml-2 dark:text-gray-500',
     },
@@ -39,12 +47,24 @@ const User = () => {
   return (
     <div>
      <Card 
-      data={data1}
+      data={userDetails}
       heading={'User Profile'}
       breadcrumbs={breadcrumbs}
       />
     </div>
   )}
 }
+
+export const getServerSideProps = async ({
+  params: { email },
+}: {
+  params: { email: string };
+}) => {
+  const res = await axios.get(`${BASE_URL}/api/user/${email}`);
+
+  return {
+    props: { userDetails: res.data.user },
+  };
+};
 
 export default User

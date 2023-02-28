@@ -8,22 +8,37 @@ const About = () => {
         <SectionTitle
           pretitle="About"
           title="DEMO: Electronic records of Astronauts">
+            February 2020: Demo project
         </SectionTitle>
-        <div className="container p-1 mx-auto flex w-full flex-col mt-4 items-left justify-center text-left">
-          <p className="max-w-2xl py-1 text-sm leading-normal text-gray-500 dark:text-gray-300">December 10, 2022 / 8min read </p>
-          <p className="max-w-2xl py-1 text-base leading-normal text-gray-500 dark:text-gray-300">text</p>
-        </div> 
+        
       </article>
 
-      <article className="container p-1 mx-auto flex w-full flex-col mt-4 items-left justify-center text-left" >
-        <h2>title</h2>
-        <p>link to blog post?</p> 
-       
+      <article>
         
-        <ul>
-          <li>item 1</li>
-          <li>item 2</li>
-        </ul>
+        <SectionTitle
+          pretitle="Use Case"
+          title="">
+            Simple web application to store astronaut data
+        </SectionTitle>
+        <div className='container p-1 mx-auto flex w-full flex-col mt-4 items-center justify-start text-start'>
+          <ul className='max-w-2xl py-1 text-lg leading-normal text-gray-500 lg:text-xl xl:text-xl list-disc list-inside' >
+            <li>Name</li>
+            <li>Surname</li>
+            <li>Birth Date</li>
+            <li>Super Power</li>
+          </ul>
+        </div>
+        <SectionTitle
+          pretitle="Tech stack"
+          title="Frontend">
+            Next.js, React, Tailwind CSS
+        </SectionTitle>
+        <SectionTitle
+          pretitle=""
+          title="Backend">
+            Next.js APIs, REST (GET, POST, PUT, DELETE), Sanity.io for Database, NextAuth.js and next-auth-sanity library for authentication(this needs still some adjustments to make app more secure, but sufficient for demo purposes).
+        </SectionTitle>
+        
       
       </article>
     </main>

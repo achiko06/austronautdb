@@ -55,7 +55,7 @@ const Card: NextPage<IProps> = ({data, heading, breadcrumbs}) => {
                       <p><span className='font-bold'>Birth Date: </span>{data.birthDate || 'N/A'}</p>
                       </>
                     ) : (
-                      <p><span className='font-bold'>User Type: </span>{data.type || 'N/A'}</p>
+                      <p><span className='font-bold'>User Type: </span>{data.usertype || 'N/A'}</p>
                     )}
                   </div>
                 </div>
