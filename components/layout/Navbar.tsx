@@ -12,7 +12,6 @@ const Navbar = () => {
     const [showUserDropdown, setShowUserDropdown] = useState<Boolean>(false);
     const [searchValue, setSearchValue] = useState('');
     const { status, data } = useSession();
-    console.log(data?.user)
     const user = data?.user || false
 
     const handleSearch = (e: { preventDefault: () => void }) => {

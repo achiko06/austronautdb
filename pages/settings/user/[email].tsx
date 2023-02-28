@@ -11,7 +11,6 @@ interface IProps {
 }
 
 const User = ({ userDetails }: IProps) => {
-  console.log(userDetails)
   const { status, data } = useSession();
   const router = useRouter();
   useEffect(() => {

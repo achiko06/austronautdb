@@ -22,8 +22,8 @@ export default function Home({ persons }: IProps) {
   }, [status, router])
   const astronautCount = persons.length
   const powerCount = powers.length
-  const total = astronautCount + powerCount
-
+  const uniquePowers = Array.from(new Set(persons.map((item: any) => item.power))).length
+  
   const counterData = [
     {
       title: 'Astronauts',
@@ -32,15 +32,15 @@ export default function Home({ persons }: IProps) {
       color: 'bg-gradient-to-br from-green-200 to-green-600',
     },
     {
-      title: 'Powers',
+      title: 'All Powers',
       id: 2,
       count: powerCount,
       color: 'bg-gradient-to-br from-blue-200 to-blue-600',
     },
     {
-      title: 'Total',
+      title: 'Unique Powers',
       id: 3,
-      count: total,
+      count: uniquePowers,
       color: 'bg-gradient-to-br from-yellow-200 to-yellow-600',
     },
     
