@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { austronauts, powers } from '@/utils/dummydata';
+import React, { useEffect } from 'react'
+import { powers } from '@/utils/dummydata';
 import Wrapper from '@/components/shared/Wrapper';
 import Counter from '@/components/shared/Counter';
 import SectionTitle from '@/components/shared/SectionTitle';
 import axios from 'axios';
 import { BASE_URL } from '@/utils';
 import { Person } from '@/types';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from 'next/router';
 
 interface IProps {
@@ -18,7 +18,7 @@ export default function Home({ persons }: IProps) {
   const router = useRouter();
   
   useEffect(() => {
-    if (status === "unauthenticated") router.push("/auth/credentials");
+    if (status === "unauthenticated") router.push("/auth/login");
   }, [status])
   const astronautCount = persons.length
   const powerCount = powers.length

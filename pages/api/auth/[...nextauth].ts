@@ -35,9 +35,10 @@ const authOptions: NextAuthOptions = {
   },
   adapter: SanityAdapter(client),
   pages: {
-    signIn: "/auth/credentials",
+    signIn: "/auth/login",
     // error: '/auth/error',
     // signOut: '/auth/signout'
+    //newUser: "/auth/new-user"
   },
   callbacks: {
     jwt(params) {

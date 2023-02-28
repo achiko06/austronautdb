@@ -2,17 +2,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Logo from '../../utils/logo.png';
-import { useRouter } from 'next/router';
 import { GoSignIn } from 'react-icons/go';
 import { BiSearch } from 'react-icons/bi';
+import { signOut, useSession } from 'next-auth/react';
 
 
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState<Boolean>(false);
     const [showUserDropdown, setShowUserDropdown] = useState<Boolean>(false);
     const [searchValue, setSearchValue] = useState('');
-    const router = useRouter();
-    const user = true
+    const { status, data } = useSession();
+    console.log(data?.user)
+    const user = data?.user || false
 
     const handleSearch = (e: { preventDefault: () => void }) => {
         e.preventDefault();
@@ -148,7 +149,7 @@ const Navbar = () => {
         {user ? ( 
           <div className={`${showUserDropdown ? '' : 'hidden'} z-50 border mx-1 border-gray-200 mt-16 w-full sm:w-1/2 md:w-1/3 xl:w-1/6 fixed right-0 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow`}>
               <div className="px-4 py-3">
-                <span className="block text-sm text-gray-900 dark:text-white">name</span>           
+                <span className="block text-sm text-gray-900 dark:text-white">{user.name}</span>           
               </div>
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
@@ -162,6 +163,7 @@ const Navbar = () => {
                 <li>
                     <button
                         onClick={() => {
+                            signOut({ redirect: false })
                             setShowUserDropdown(false);
                             }} 
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
