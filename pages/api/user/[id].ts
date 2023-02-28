@@ -1,13 +1,22 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-type Data = {
-  name: string
-}
+import { 
+  singleUserQuery, 
+ } from './../../../utils/queries';
+import { client } from '../../../utils/client';
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'GET') {
+    const { email } = req.query;
+
+    const query = singleUserQuery(email);
+
+    const user = await client.fetch(query);
+
+    const data = { 
+      user: user[0], 
+    };
+
+    res.status(200).json(data);
+  }
 }

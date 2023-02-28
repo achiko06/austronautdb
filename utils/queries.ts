@@ -13,3 +13,10 @@ export const personDetailQuery = (slug: string | string[]) => {
   }`;
   return query;
 };
+
+
+export const singleUserQuery = (email: string | string[]) => {
+  const query = `*[_type == "user" && email == '${email}']`;
+
+  return query;
+};

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { austronauts, powers } from '@/utils/dummydata';
 import Wrapper from '@/components/shared/Wrapper';
 import Counter from '@/components/shared/Counter';
@@ -6,12 +6,24 @@ import SectionTitle from '@/components/shared/SectionTitle';
 import axios from 'axios';
 import { BASE_URL } from '@/utils';
 import { Person } from '@/types';
+import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from 'next/router';
 
 interface IProps {
   persons: Person[];
 }
 
 export default function Home({ persons }: IProps) {
+  const session = useSession();
+  console.log(session)
+  const { status, data } = useSession();
+  console.log(status, data)
+  // if (status === 'loading') return <p>Loading...</p>;
+  const router = useRouter();
+  
+  useEffect(() => {
+    if (status === "unauthenticated") router.push("/auth/credentials");
+  }, [status])
   const astronautCount = persons.length
   const powerCount = powers.length
   const total = astronautCount + powerCount
@@ -64,9 +76,14 @@ export default function Home({ persons }: IProps) {
       _id: 1,
     }
   
-  
+  if (data) {
   return (
     <>
+      <div>
+        <p>User: {data.user.name}</p>
+        <button onClick={() => signOut({ redirect: false })}>Sign Out</button>
+      </div>
+
       <div>
         <Counter data={counterData}/>
 
@@ -85,7 +102,7 @@ export default function Home({ persons }: IProps) {
         {/**MAIN TABLE END*/}
       </div>
     </>
-  )
+  )}
 }
 
 export const getServerSideProps = async () => {

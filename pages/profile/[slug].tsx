@@ -2,13 +2,20 @@ import Card from '@/components/shared/Card'
 import { Person } from '@/types';
 import { BASE_URL } from '@/utils';
 import axios from 'axios';
-import React from 'react'
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import React,  { useEffect } from 'react'
 
 interface IProps {
   personDetails: Person;
 }
 
 const Profile = ({ personDetails }: IProps) => {
+  const { status, data } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (status === "unauthenticated") router.push("/auth/login");
+  }, [status]);
   const personId = personDetails._id.slice(0,8)
   const breadcrumbs = [
     {
@@ -25,6 +32,7 @@ const Profile = ({ personDetails }: IProps) => {
     },
   ];
 
+  if (status === "authenticated") {
   return (
     <div>
       <Card 
@@ -33,7 +41,7 @@ const Profile = ({ personDetails }: IProps) => {
       breadcrumbs={breadcrumbs}
       />
     </div>
-  )
+  )}
 }
 
 export default Profile

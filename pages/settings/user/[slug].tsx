@@ -1,8 +1,16 @@
 import Card from '@/components/shared/Card'
-import React from 'react'
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react'
 
 const User = () => {
-  const data = 
+  const { status, data } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (status === "unauthenticated") router.push("/auth/login");
+  }, [status]);
+
+  const data1 = 
     {
       _id: 1,
       title: 'nameuser',
@@ -27,15 +35,16 @@ const User = () => {
     },
   ];
 
+  if (status === "authenticated") {
   return (
     <div>
      <Card 
-      data={data}
+      data={data1}
       heading={'User Profile'}
       breadcrumbs={breadcrumbs}
       />
     </div>
-  )
+  )}
 }
 
 export default User
