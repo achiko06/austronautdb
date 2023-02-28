@@ -15,7 +15,7 @@ const Profile = ({ personDetails }: IProps) => {
   const router = useRouter();
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login");
-  }, [status]);
+  }, [status, router]);
   const personId = personDetails._id.slice(0,8)
   const breadcrumbs = [
     {

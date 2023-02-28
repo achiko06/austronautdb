@@ -19,7 +19,7 @@ export default function Home({ persons }: IProps) {
   
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login");
-  }, [status])
+  }, [status, router])
   const astronautCount = persons.length
   const powerCount = powers.length
   const total = astronautCount + powerCount

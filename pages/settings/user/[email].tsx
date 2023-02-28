@@ -16,7 +16,7 @@ const User = ({ userDetails }: IProps) => {
   const router = useRouter();
   useEffect(() => {
     if (status === "unauthenticated") router.push("/auth/login");
-  }, [status]);
+  }, [status, router]);
 
   const data1 = 
     {
