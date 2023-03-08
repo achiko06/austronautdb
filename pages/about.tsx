@@ -14,7 +14,7 @@ const About = () => {
         <SectionTitle
           pretitle="About"
           title="DEMO: Electronic records of Astronauts">
-            February 2020: Demo project
+            February 2023: Demo project
         </SectionTitle>
         
       </article>
